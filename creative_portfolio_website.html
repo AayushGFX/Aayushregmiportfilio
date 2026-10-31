@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AetherVisuals | Video Editor, Graphic & Brand Designer</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              purple: '#8B5CF6',
+              cyan: '#06B6D4',
+              pink: '#EC4899',
+              dark: '#0B0F19',
+              card: '#111827',
+              border: '#1F2937'
+            }
+          },
+          animation: {
+            'glow-pulse': 'glowPulse 4s ease-in-out infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            glowPulse: {
+              '0%, 100%': { opacity: 0.4, transform: 'scale(1)' },
+              '50%': { opacity: 0.8, transform: 'scale(1.05)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0B0F19;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1F2937;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #8B5CF6;
+    }
+    .neon-text-gradient {
+      background: linear-gradient(135deg, #A78BFA 0%, #06B6D4 50%, #EC4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .glass-nav {
+      background: rgba(11, 15, 25, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .glass-card {
+      background: rgba(17, 24, 39, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(139, 92, 246, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-[#080B11] text-slate-200 font-sans antialiased overflow-x-hidden selection:bg-purple-600 selection:text-white">
+
+  <!-- Ambient Background Glows -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-purple-600/15 rounded-full blur-[120px] animate-glow-pulse"></div>
+    <div class="absolute top-1/3 -right-24 w-96 h-96 bg-cyan-500/15 rounded-full blur-[130px] animate-glow-pulse" style="animation-delay: 2s;"></div>
+    <div class="absolute -bottom-32 left-1/4 w-[30rem] h-[30rem] bg-indigo-600/10 rounded-full blur-[140px]"></div>
+  </div>
+
+  <!-- STICKY NAVBAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-nav border-b border-slate-800/60" id="mainHeader">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-cyan-400 p-[2px] transition-transform duration-300 group-hover:scale-105">
+          <div class="w-full h-full bg-[#0B0F19] rounded-[10px] flex items-center justify-center font-display font-black text-transparent bg-clip-text bg-gradient-to-tr from-purple-400 to-cyan-300 text-lg">
+            AV
+          </div>
+        </div>
+        <span class="font-display font-extrabold text-xl tracking-tight text-white group-hover:text-purple-300 transition-colors">
+          Aether<span class="text-cyan-400">Visuals</span>
+        </span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#work" class="hover:text-cyan-400 transition-colors py-1">Portfolio</a>
+        <a href="#services" class="hover:text-cyan-400 transition-colors py-1">Services</a>
+        <a href="#templates" class="hover:text-cyan-400 transition-colors py-1">Templates</a>
+        <a href="#about" class="hover:text-cyan-400 transition-colors py-1">About</a>
+        <a href="#testimonials" class="hover:text-cyan-400 transition-colors py-1">Reviews</a>
+      </nav>
+
+      <!-- CTA & Mobile Toggle -->
+      <div class="flex items-center gap-4">
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 shadow-lg shadow-purple-900/30 hover:shadow-purple-700/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200">
+          <span>Let's Talk</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileMenuBtn" aria-label="Toggle menu" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 focus:outline-none">
+          <i data-lucide="menu" id="menuOpenIcon" class="w-6 h-6"></i>
+          <i data-lucide="x" id="menuCloseIcon" class="w-6 h-6 hidden"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-slate-800 bg-[#0B0F19]/95 px-6 py-6 space-y-4">
+      <a href="#work" class="block text-slate-200 hover:text-cyan-400 text-base font-medium mobile-link">Portfolio</a>
+      <a href="#services" class="block text-slate-200 hover:text-cyan-400 text-base font-medium mobile-link">Services</a>
+      <a href="#templates" class="block text-slate-200 hover:text-cyan-400 text-base font-medium mobile-link">Templates</a>
+      <a href="#about" class="block text-slate-200 hover:text-cyan-400 text-base font-medium mobile-link">About</a>
+      <a href="#testimonials" class="block text-slate-200 hover:text-cyan-400 text-base font-medium mobile-link">Reviews</a>
+      <a href="#contact" class="block w-full text-center py-3 rounded-xl font-semibold bg-gradient-to-r from-purple-600 to-cyan-500 text-white mobile-link">
+        Get a Free Quote
+      </a>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-24">
+    <!-- HERO SECTION -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 flex flex-col items-center text-center">
+      <!-- Availability Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-950/40 text-purple-300 text-xs sm:text-sm font-medium mb-8 backdrop-blur-md shadow-inner">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+        </span>
+        Available for Freelance & Custom Projects (Q4)
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight max-w-5xl leading-[1.1] mb-6">
+        Transforming Ideas into <br>
+        <span class="neon-text-gradient">Visual Stories & High-Impact Designs</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-slate-400 text-base sm:text-lg lg:text-xl max-w-2xl leading-relaxed mb-10">
+        I create retention-driven video edits, iconic brand identities, high-converting social designs, and modular creative templates that scale creators & brands.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-16">
+        <a href="#work" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-white bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 shadow-xl shadow-purple-950/50 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+          <i data-lucide="sparkles" class="w-5 h-5"></i>
+          Explore Work
+        </a>
+        <button onclick="openShowreelModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-slate-200 bg-slate-900/80 border border-slate-700/80 hover:border-slate-500 hover:bg-slate-800 transition-all flex items-center justify-center gap-2 group">
+          <div class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center group-hover:bg-purple-500 group-hover:text-white transition-colors">
+            <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+          </div>
+          Watch 2026 Showreel
+        </button>
+      </div>
+
+      <!-- Stats Counters -->
+      <div class="w-full max-w-4xl grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-8 border-t border-slate-800/80">
+        <div class="p-4 rounded-2xl glass-card text-center">
+          <div class="font-display font-extrabold text-2xl sm:text-3xl text-white counter" data-target="280">0+</div>
+          <div class="text-xs sm:text-sm text-slate-400 mt-1">Projects Delivered</div>
+        </div>
+        <div class="p-4 rounded-2xl glass-card text-center">
+          <div class="font-display font-extrabold text-2xl sm:text-3xl text-cyan-400">4.9 ★</div>
+          <div class="text-xs sm:text-sm text-slate-400 mt-1">Client Satisfaction</div>
+        </div>
+        <div class="p-4 rounded-2xl glass-card text-center">
+          <div class="font-display font-extrabold text-2xl sm:text-3xl text-purple-400 counter" data-target="50">0M+</div>
+          <div class="text-xs sm:text-sm text-slate-400 mt-1">Total Video Views</div>
+        </div>
+        <div class="p-4 rounded-2xl glass-card text-center">
+          <div class="font-display font-extrabold text-2xl sm:text-3xl text-white counter" data-target="6">0+</div>
+          <div class="text-xs sm:text-sm text-slate-400 mt-1">Years Experience</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO SHOWCASE SECTION -->
+    <section id="work" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 scroll-mt-20">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+        <div>
+          <span class="text-xs font-bold tracking-widest text-cyan-400 uppercase">Selected Works</span>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-1">Featured Creative Portfolio</h2>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap gap-2 p-1.5 rounded-2xl bg-slate-900/90 border border-slate-800" id="filterContainer">
+          <button class="filter-btn active-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all" data-category="all">All Projects</button>
+          <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-400 hover:text-white transition-all" data-category="video">Video Editing</button>
+          <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-400 hover:text-white transition-all" data-category="graphics">Graphic Design</button>
+          <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-400 hover:text-white transition-all" data-category="branding">Logos & Brand</button>
+          <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-400 hover:text-white transition-all" data-category="templates">Templates</button>
+        </div>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolioGrid">
+
+        <!-- Item 1: Video Editing (Short Form Reel) -->
+        <div class="portfolio-item group glass-card rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-purple-900/20"
+             data-category="video"
+             onclick="openProjectModal('CyberPulse Tech Launch Reel', 'video', 'Short-form dynamic reel with sound design, 3D motion tracking, speed ramps, and retention hook overlays.', 'https://placehold.co/1280x720/1a1236/a78bfa?text=Dynamic+Tech+Reel+Showcase', 'Client: CyberPulse AI • Role: Edit & Sound Design • Engagement: 1.4M Views')">
+          <div class="relative aspect-video overflow-hidden bg-slate-800">
+            <img src="https://placehold.co/800x450/191338/9d77f7?text=CyberPulse+Reel" alt="CyberPulse Tech Reel" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.src='https://placehold.co/800x450/222/aaa?text=Preview'">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <div class="absolute top-3 left-3 bg-purple-600/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 backdrop-blur-md">
+              <i data-lucide="play" class="w-3 h-3 fill-current"></i> Video Edit
+            </div>
+            <!-- Play Indicator Overlay -->
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
+              <span class="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white scale-90 group-hover:scale-100 transition-transform">
+                <i data-lucide="play" class="w-6 h-6 fill-current"></i>
+              </span>
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-lg text-white group-hover:text-cyan-400 transition-colors">CyberPulse Tech Launch Reel</h3>
+            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Viral short-form edit combining sound design, pacing manipulation, and 3D typography.</p>
+            <div class="mt-4 flex items-center justify-between text-xs text-slate-500 font-medium pt-3 border-t border-slate-800">
+              <span>Viral Reels / TikTok</span>
+              <span class="text-purple-400 flex items-center gap-1">Preview <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2: Logo & Branding -->
+        <div class="portfolio-item group glass-card rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-cyan-900/20"
+             data-category="branding"
+             onclick="openProjectModal('Apex Quantum Brand Identity', 'image', 'Complete brand identity kit featuring geometric monogram, responsive lockups, primary color schemes, and typographical guidelines.', 'https://placehold.co/1280x720/0c2333/06b6d4?text=Apex+Quantum+Brand+Identity', 'Client: Apex Quantum • Deliverables: Full Styleguide, Vector Assets, Stationery')">
+          <div class="relative aspect-video overflow-hidden bg-slate-800">
+            <img src="https://placehold.co/800x450/0c2438/22d3ee?text=Apex+Quantum+Identity" alt="Apex Quantum" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.src='https://placehold.co/800x450/222/aaa?text=Preview'">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <div class="absolute top-3 left-3 bg-cyan-600/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 backdrop-blur-md">
+              <i data-lucide="feather" class="w-3 h-3"></i> Logo & Identity
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-lg text-white group-hover:text-cyan-400 transition-colors">Apex Quantum Identity System</h3>
+            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Minimalist corporate mark with custom futuristic typography & dark mode guidelines.</p>
+            <div class="mt-4 flex items-center justify-between text-xs text-slate-500 font-medium pt-3 border-t border-slate-800">
+              <span>Brand Guidelines</span>
+              <span class="text-cyan-400 flex items-center gap-1">Preview <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3: Graphic Design -->
+        <div class="portfolio-item group glass-card rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-pink-900/20"
+             data-category="graphics"
+             onclick="openProjectModal('Neon Odyssey Music Tour Posters', 'image', 'Series of high-impact promotional concert posters with dual-tone lighting, textured print aesthetics, and custom vector glyphs.', 'https://placehold.co/1280x720/310b24/ec4899?text=Neon+Odyssey+Posters', 'Client: Odyssey Fest • Deliverables: Digital Social Kit, Billboards, Print Posters')">
+          <div class="relative aspect-video overflow-hidden bg-slate-800">
+            <img src="https://placehold.co/800x450/330d25/f472b6?text=Neon+Odyssey+Poster" alt="Poster Design" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.src='https://placehold.co/800x450/222/aaa?text=Preview'">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <div class="absolute top-3 left-3 bg-pink-600/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 backdrop-blur-md">
+              <i data-lucide="image" class="w-3 h-3"></i> Graphic Design
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-lg text-white group-hover:text-cyan-400 transition-colors">Neon Odyssey Tour Graphics</h3>
+            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Electrifying event poster series & high-CTR social media campaign banners.</p>
+            <div class="mt-4 flex items-center justify-between text-xs text-slate-500 font-medium pt-3 border-t border-slate-800">
+              <span>Event / Editorial</span>
+              <span class="text-pink-400 flex items-center gap-1">Preview <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4: Templates -->
+        <div class="portfolio-item group glass-card rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-purple-900/20"
+             data-category="templates"
+             onclick="openProjectModal('Kinetic Motion Title Pack v2', 'template', 'Premiere Pro & After Effects modular kinetic typography templates. 24 editable animations with custom easing and glow controls.', 'https://placehold.co/1280x720/1f1a3a/8b5cf6?text=Kinetic+Motion+Pack+v2', 'Includes MOGRT & AE project files • Resolution: 4K 60fps')">
+          <div class="relative aspect-video overflow-hidden bg-slate-800">
+            <img src="https://placehold.co/800x450/1e173e/a78bfa?text=Kinetic+Title+Pack" alt="Kinetic Titles" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.src='https://placehold.co/800x450/222/aaa?text=Preview'">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <div class="absolute top-3 left-3 bg-indigo-600/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 backdrop-blur-md">
+              <i data-lucide="layers" class="w-3 h-3"></i> Motion Template
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-lg text-white group-hover:text-cyan-400 transition-colors">Kinetic Motion Title Pack</h3>
+            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Plug-and-play Premiere Pro (.MOGRT) title card templates for YouTube creators.</p>
+            <div class="mt-4 flex items-center justify-between text-xs text-slate-500 font-medium pt-3 border-t border-slate-800">
+              <span>MOGRT / After Effects</span>
+              <span class="text-indigo-400 flex items-center gap-1">Preview <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5: Video Editing (YouTube Documentary Style) -->
+        <div class="portfolio-item group glass-card rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-purple-900/20"
+             data-category="video"
+             onclick="openProjectModal('The Silicon Era (Mini-Documentary)', 'video', 'Paced storytelling, custom animated map overlays, archival restoration, and cinematic color grade.', 'https://placehold.co/1280x720/121b2d/38bdf8?text=Documentary+Video+Edit', 'Client: Historia Media • Views: 890K • Length: 18 Minutes')">
+          <div class="relative aspect-video overflow-hidden bg-slate-800">
+            <img src="https://placehold.co/800x450/132135/60a5fa?text=Mini-Doc+Edit" alt="Documentary Edit" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.src='https://placehold.co/800x450/222/aaa?text=Preview'">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <div class="absolute top-3 left-3 bg-purple-600/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 backdrop-blur-md">
+              <i data-lucide="play" class="w-3 h-3 fill-current"></i> Video Edit
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
+              <span class="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white scale-90 group-hover:scale-100 transition-transform">
+                <i data-lucide="play" class="w-6 h-6 fill-current"></i>
+              </span>
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-lg text-white group-hover:text-cyan-400 transition-colors">The Silicon Era Documentary</h3>
+            <p class="text-xs text-slate-400 mt-1 line-clamp-2">High-retention documentary editing with custom 2.5D photo animations & soundscapes.</p>
+            <div class="mt-4 flex items-center justify-between text-xs text-slate-500 font-medium pt-3 border-t border-slate-800">
+              <span>YouTube Longform</span>
+              <span class="text-purple-400 flex items-center gap-1">Preview <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6: Branding & Logo -->
+        <div class="portfolio-item group glass-card rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-cyan-900/20"
+             data-category="branding"
+             onclick="openProjectModal('Vortex Studio Emblem & Merch', 'image', 'Geometric heraldry logo mark engineered for dark clothing, merchandise, and digital game UI splash screens.', 'https://placehold.co/1280x720/17153a/818cf8?text=Vortex+Studio+Emblem', 'Client: Vortex Esports • Vector Mastery: SVG, EPS, AI')">
+          <div class="relative aspect-video overflow-hidden bg-slate-800">
+            <img src="https://placehold.co/800x450/19173a/a5b4fc?text=Vortex+Studio+Logo" alt="Vortex Logo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.src='https://placehold.co/800x450/222/aaa?text=Preview'">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <div class="absolute top-3 left-3 bg-cyan-600/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 backdrop-blur-md">
+              <i data-lucide="feather" class="w-3 h-3"></i> Logo & Identity
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-lg text-white group-hover:text-cyan-400 transition-colors">Vortex Gaming Studio Emblem</h3>
+            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Crisp vector crest designed for high scalability across social avatars and embroidered apparel.</p>
+            <div class="mt-4 flex items-center justify-between text-xs text-slate-500 font-medium pt-3 border-t border-slate-800">
+              <span>Vector Identity</span>
+              <span class="text-cyan-400 flex items-center gap-1">Preview <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SERVICES OFFERED SECTION -->
+    <section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 scroll-mt-20 border-t border-slate-800/80">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold tracking-widest text-purple-400 uppercase">Core Expertise</span>
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-2">Services Crafted to Scale Your Brand</h2>
+        <p class="text-slate-400 text-sm sm:text-base mt-3">From viral timeline pacing to evergreen brand typography, everything is designed to hold attention and convert viewers.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Service 1: Video Editing -->
+        <div class="glass-card p-6 rounded-2xl relative group hover:border-purple-500/50 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-purple-500 group-hover:text-white transition-all">
+            <i data-lucide="video" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-white mb-2">Video Editing</h3>
+          <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">Fast-paced, hook-driven edits built to maximize average view duration.</p>
+          <ul class="space-y-2 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> YouTube Long-form & Vlogs</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Reels, TikTok & Shorts</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Sound Design & Foley FX</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Pro Color Grading (LUTs)</li>
+          </ul>
+        </div>
+
+        <!-- Service 2: Graphic Design -->
+        <div class="glass-card p-6 rounded-2xl relative group hover:border-cyan-500/50 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-white transition-all">
+            <i data-lucide="palette" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-white mb-2">Graphic Design</h3>
+          <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">High-converting visuals, thumbnails, and promotional collateral.</p>
+          <ul class="space-y-2 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> 10%+ CTR YouTube Thumbnails</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Social Media Kits & Carousels</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Event Posters & Album Art</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Ad Creatives & Web Banners</li>
+          </ul>
+        </div>
+
+        <!-- Service 3: Logo & Brand Identity -->
+        <div class="glass-card p-6 rounded-2xl relative group hover:border-pink-500/50 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/20 text-pink-400 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-pink-500 group-hover:text-white transition-all">
+            <i data-lucide="sparkle" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-white mb-2">Logo & Branding</h3>
+          <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">Memorable brand marks and comprehensive styling guidelines.</p>
+          <ul class="space-y-2 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Minimalist & Modern Marks</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Vector Scalability (AI, SVG)</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Color Palettes & Type Systems</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Brand Styleguide Documentation</li>
+          </ul>
+        </div>
+
+        <!-- Service 4: Custom Templates -->
+        <div class="glass-card p-6 rounded-2xl relative group hover:border-indigo-500/50 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-indigo-500 group-hover:text-white transition-all">
+            <i data-lucide="layout-grid" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-white mb-2">Creative Templates</h3>
+          <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">Custom turnkey assets that save your internal team dozens of hours.</p>
+          <ul class="space-y-2 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Premiere Pro & After Effects (.mogrt)</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Editable Canva Social Packs</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Photoshop PSD Smart Mockups</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Stream Overlays & Transitions</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DIGITAL TEMPLATE STORE & DOWNLOAD PREVIEWS -->
+    <section id="templates" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 scroll-mt-20">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <span class="text-xs font-bold tracking-widest text-cyan-400 uppercase">Instant Workflow Boosters</span>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-1">Ready-to-Use Creative Templates</h2>
+          <p class="text-slate-400 text-sm mt-2">Tested in production workflows. Drop into your project and customize in minutes.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-slate-400">Compatible with:</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-semibold text-purple-300 border border-slate-700">Premiere</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-semibold text-blue-300 border border-slate-700">Photoshop</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-semibold text-cyan-300 border border-slate-700">Canva</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Template 1 -->
+        <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between group">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-slate-900">
+              <img src="https://placehold.co/600x375/1e173e/c084fc?text=Viral+Captions+Pack" alt="Captions Pack" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x375/222/aaa?text=Template'">
+              <span class="absolute top-3 right-3 bg-purple-600/90 text-white font-bold text-xs px-2.5 py-1 rounded-full backdrop-blur-md">Popular</span>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-purple-400">MOGRT / Premiere Pro</span>
+                <span class="text-sm font-extrabold text-white">$29 <span class="text-xs text-slate-400 line-through font-normal">$49</span></span>
+              </div>
+              <h3 class="font-display font-bold text-lg text-white">Viral Dynamic Captions Presets</h3>
+              <p class="text-slate-400 text-xs mt-2 leading-relaxed">18 animated subtitle presets with automatic word-highlighting, emojis, and sound cue triggers.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0 flex gap-3">
+            <button onclick="previewTemplate('Viral Captions Pack', 'Includes 18 customizable .mogrt styles. Fast rendering with auto-reflow and bounce physics.')" class="flex-1 py-2.5 rounded-xl border border-slate-700 hover:border-slate-500 text-xs font-semibold text-slate-300 hover:text-white transition-colors">
+              Preview
+            </button>
+            <button onclick="handlePurchaseDemo('Viral Dynamic Captions Pack')" class="flex-1 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-xs font-bold text-white transition-colors flex items-center justify-center gap-1.5 shadow-md shadow-purple-900/30">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i> Get Pack
+            </button>
+          </div>
+        </div>
+
+        <!-- Template 2 -->
+        <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between group">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-slate-900">
+              <img src="https://placehold.co/600x375/0d243a/38bdf8?text=YouTube+CTR+Thumbnails" alt="Thumbnails Pack" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x375/222/aaa?text=Template'">
+              <span class="absolute top-3 right-3 bg-cyan-600/90 text-white font-bold text-xs px-2.5 py-1 rounded-full backdrop-blur-md">PSD & Canva</span>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-cyan-400">Canva + Photoshop</span>
+                <span class="text-sm font-extrabold text-white">$24 <span class="text-xs text-slate-400 line-through font-normal">$39</span></span>
+              </div>
+              <h3 class="font-display font-bold text-lg text-white">Ultra CTR Thumbnail Master Kit</h3>
+              <p class="text-slate-400 text-xs mt-2 leading-relaxed">20 high-click thumbnail mockups featuring face cutouts, glowing contours, arrows, and 3D text layers.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0 flex gap-3">
+            <button onclick="previewTemplate('Ultra CTR Thumbnail Kit', 'Fully editable Photoshop Smart Objects and 1-click Canva templates for gaming, tech, and finance niches.')" class="flex-1 py-2.5 rounded-xl border border-slate-700 hover:border-slate-500 text-xs font-semibold text-slate-300 hover:text-white transition-colors">
+              Preview
+            </button>
+            <button onclick="handlePurchaseDemo('Ultra CTR Thumbnail Master Kit')" class="flex-1 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-xs font-bold text-white transition-colors flex items-center justify-center gap-1.5 shadow-md shadow-cyan-900/30">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i> Get Pack
+            </button>
+          </div>
+        </div>
+
+        <!-- Template 3 -->
+        <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between group">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-slate-900">
+              <img src="https://placehold.co/600x375/2e122b/f472b6?text=Brand+Styleguide+Kit" alt="Brand Kit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x375/222/aaa?text=Template'">
+              <span class="absolute top-3 right-3 bg-pink-600/90 text-white font-bold text-xs px-2.5 py-1 rounded-full backdrop-blur-md">Figma & Illustrator</span>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-pink-400">Adobe Illustrator & Figma</span>
+                <span class="text-sm font-extrabold text-white">$34 <span class="text-xs text-slate-400 line-through font-normal">$55</span></span>
+              </div>
+              <h3 class="font-display font-bold text-lg text-white">Agency Brand Guidelines Deck</h3>
+              <p class="text-slate-400 text-xs mt-2 leading-relaxed">28-page comprehensive brand book layout ready to deliver directly to corporate clients.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0 flex gap-3">
+            <button onclick="previewTemplate('Agency Brand Guidelines Deck', 'Complete presentation slides covering logo clearspace, color palettes, mockups, typography & tone of voice.')" class="flex-1 py-2.5 rounded-xl border border-slate-700 hover:border-slate-500 text-xs font-semibold text-slate-300 hover:text-white transition-colors">
+              Preview
+            </button>
+            <button onclick="handlePurchaseDemo('Agency Brand Guidelines Deck')" class="flex-1 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-500 text-xs font-bold text-white transition-colors flex items-center justify-center gap-1.5 shadow-md shadow-pink-900/30">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i> Get Pack
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SHOWREEL PROMO BANNER -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="relative rounded-3xl overflow-hidden p-8 sm:p-14 border border-purple-500/30 bg-gradient-to-r from-purple-950/70 via-slate-900/90 to-cyan-950/70 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="max-w-xl text-center md:text-left">
+          <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/40">Watch in 4K 60FPS</span>
+          <h3 class="font-display font-black text-2xl sm:text-4xl text-white mt-4">Curious how pacing changes everything?</h3>
+          <p class="text-slate-300 text-sm sm:text-base mt-2">Take 90 seconds to see how dynamic zooms, punch-ins, sound design, and color craft create mesmerizing edits.</p>
+        </div>
+        <button onclick="openShowreelModal()" class="flex-shrink-0 group px-8 py-4 rounded-2xl bg-white text-slate-950 font-bold hover:bg-cyan-300 transition-all flex items-center gap-3 shadow-xl hover:scale-105 active:scale-95">
+          <div class="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center group-hover:bg-black transition-colors">
+            <i data-lucide="play" class="w-4 h-4 fill-current ml-0.5"></i>
+          </div>
+          <span>Watch 2026 Showreel</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonials" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 scroll-mt-20">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs font-bold tracking-widest text-cyan-400 uppercase">Trusted by Creators & Founders</span>
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-2">Client Feedback</h2>
+        <p class="text-slate-400 text-sm mt-2">Hear directly from YouTube creators, startups, and agencies.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Testimonial 1 -->
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 mb-4 gap-1">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed italic">
+              "Our retention rate jumped from 38% to 64% after switching our YouTube video editing and sound design to AetherVisuals. The visual pacing and graphic callouts are next level!"
+            </p>
+          </div>
+          <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-800">
+            <div class="w-10 h-10 rounded-full bg-purple-600/30 border border-purple-500/40 flex items-center justify-center font-bold text-white">MK</div>
+            <div>
+              <h4 class="text-white text-sm font-bold">Marcus King</h4>
+              <p class="text-slate-400 text-xs">Tech Content Creator (640K Subs)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 mb-4 gap-1">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed italic">
+              "We needed a fresh brand identity and logo for our AI SaaS launch. The turnaround was under 6 days, and the vector brand kit blew our seed investors away."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-800">
+            <div class="w-10 h-10 rounded-full bg-cyan-600/30 border border-cyan-500/40 flex items-center justify-center font-bold text-white">SL</div>
+            <div>
+              <h4 class="text-white text-sm font-bold">Sarah Lin</h4>
+              <p class="text-slate-400 text-xs">Founder, Synapse AI</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 mb-4 gap-1">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed italic">
+              "The custom motion graphic templates created for our agency saved our video team at least 15 hours every single week. Consistent, aesthetic, and idiot-proof to use."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-800">
+            <div class="w-10 h-10 rounded-full bg-pink-600/30 border border-pink-500/40 flex items-center justify-center font-bold text-white">DR</div>
+            <div>
+              <h4 class="text-white text-sm font-bold">David Rivera</h4>
+              <p class="text-slate-400 text-xs">Creative Director, Nexus Agency</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 scroll-mt-20 border-t border-slate-800/80">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Left Column: Visual Mock / Profile -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-sm rounded-3xl p-1 bg-gradient-to-tr from-purple-600 via-indigo-500 to-cyan-400 shadow-2xl">
+            <div class="bg-[#0B0F19] rounded-[22px] overflow-hidden p-6 text-center">
+              <div class="relative w-40 h-40 mx-auto rounded-2xl overflow-hidden mb-6 border-2 border-slate-700/60 shadow-inner">
+                <img src="https://placehold.co/400x400/181a29/a78bfa?text=Designer+Avatar" alt="Designer Profile" class="w-full h-full object-cover">
+              </div>
+              <h3 class="font-display font-extrabold text-2xl text-white">Alex Sterling</h3>
+              <p class="text-cyan-400 text-sm font-medium mt-1">Lead Video Editor & Visual Designer</p>
+
+              <div class="flex justify-center gap-2 mt-4 text-xs">
+                <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-slate-300 border border-slate-700">Premiere Pro</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-slate-300 border border-slate-700">After Effects</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-slate-300 border border-slate-700">Illustrator</span>
+              </div>
+
+              <div class="mt-6 pt-6 border-t border-slate-800 flex justify-around text-center">
+                <div>
+                  <div class="font-display font-bold text-white text-lg">99.8%</div>
+                  <div class="text-[11px] text-slate-400">On-Time Delivery</div>
+                </div>
+                <div>
+                  <div class="font-display font-bold text-white text-lg">&lt; 4 Hours</div>
+                  <div class="text-[11px] text-slate-400">Avg. Reply Time</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Story & Philosophy -->
+        <div class="lg:col-span-7">
+          <span class="text-xs font-bold tracking-widest text-purple-400 uppercase">Behind the Screens</span>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-2 leading-tight">
+            Design isn't just decoration. It's the engine of engagement.
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-4 leading-relaxed">
+            In an era where attention spans are measured in milliseconds, standard stock edits and bland templates get scrolled past. I combine motion psychology, meticulous sound design, and clean vector geometry to make content impossible to ignore.
+          </p>
+          <p class="text-slate-400 text-sm sm:text-base mt-3 leading-relaxed">
+            Whether you are a solo creator pushing 100K to 1M subscribers, a consumer brand launching on TikTok, or an enterprise revamping its brand mark, I work directly with you with rapid iterations and crystal-clear communication.
+          </p>
+
+          <!-- Core Toolkit Icons -->
+          <div class="mt-8 pt-6 border-t border-slate-800">
+            <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4">My Primary Software Stack</h4>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-medium text-purple-300 flex items-center gap-2">
+                <i data-lucide="film" class="w-3.5 h-3.5"></i> Premiere Pro
+              </span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-medium text-indigo-300 flex items-center gap-2">
+                <i data-lucide="wand-2" class="w-3.5 h-3.5"></i> After Effects
+              </span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-medium text-cyan-300 flex items-center gap-2">
+                <i data-lucide="pen-tool" class="w-3.5 h-3.5"></i> Illustrator
+              </span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-medium text-blue-300 flex items-center gap-2">
+                <i data-lucide="image" class="w-3.5 h-3.5"></i> Photoshop
+              </span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-medium text-pink-300 flex items-center gap-2">
+                <i data-lucide="figma" class="w-3.5 h-3.5"></i> Figma
+              </span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-medium text-amber-300 flex items-center gap-2">
+                <i data-lucide="sliders" class="w-3.5 h-3.5"></i> DaVinci Resolve
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / GET A QUOTE FORM -->
+    <section id="contact" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 scroll-mt-20">
+      <div class="glass-card rounded-3xl p-8 sm:p-12 relative overflow-hidden border border-slate-800 shadow-2xl">
+        <!-- Background Accent Glow -->
+        <div class="absolute -right-20 -top-20 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-xs font-bold tracking-widest text-cyan-400 uppercase">Ready to Create?</span>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-1">Let's Build Something Remarkable</h2>
+          <p class="text-slate-400 text-sm mt-2">Fill out the quick briefing form below. I will review your requirements and respond within 24 hours.</p>
+        </div>
+
+        <form id="projectInquiryForm" class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <!-- Full Name -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">Your Name *</label>
+              <input type="text" id="senderName" required placeholder="e.g. Jordan Smith" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition-colors">
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">Email Address *</label>
+              <input type="email" id="senderEmail" required placeholder="you@company.com" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition-colors">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <!-- Service Required -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">Service Needed *</label>
+              <select id="selectedService" required class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white text-sm focus:outline-none focus:border-cyan-400 transition-colors">
+                <option value="Video Editing (Shorts / Reels)">Video Editing (Shorts / Reels / TikTok)</option>
+                <option value="Video Editing (YouTube Long-form)">Video Editing (YouTube Long-form / Docu)</option>
+                <option value="Logo & Brand Identity">Logo & Brand Identity Design</option>
+                <option value="Graphic Design / Thumbnails">Graphic Design & Social Kits</option>
+                <option value="Custom Motion Templates">Custom Motion / Canva Templates</option>
+                <option value="Complete Creative Retainer">Full Creative Retainer Bundle</option>
+              </select>
+            </div>
+
+            <!-- Budget Range -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">Estimated Budget *</label>
+              <select id="selectedBudget" required class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white text-sm focus:outline-none focus:border-cyan-400 transition-colors">
+                <option value="$300 - $800">$300 – $800</option>
+                <option value="$800 - $2,000" selected>$800 – $2,000</option>
+                <option value="$2,000 - $5,000">$2,000 – $5,000</option>
+                <option value="$5,000+">$5,000+ (Comprehensive Campaign)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Project Details -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">Project Brief & Goals *</label>
+            <textarea id="projectBrief" rows="4" required placeholder="Tell me about your channel/brand, target delivery date, references or links, and key expectations..." class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition-colors resize-none"></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="text-center pt-2">
+            <button type="submit" id="submitBtn" class="w-full sm:w-auto px-10 py-4 rounded-xl font-bold text-white bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 shadow-xl shadow-purple-950/50 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 mx-auto">
+              <i data-lucide="send" class="w-4 h-4"></i>
+              <span>Send Project Inquiry</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800/80 bg-[#070A0F] text-slate-400 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800/60">
+        <!-- Brand -->
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 to-cyan-400 p-[1px]">
+            <div class="w-full h-full bg-[#0B0F19] rounded-[7px] flex items-center justify-center font-display font-black text-xs text-cyan-300">
+              AV
+            </div>
+          </div>
+          <span class="font-display font-bold text-white text-base">Aether<span class="text-cyan-400">Visuals</span></span>
+          <span class="text-xs text-slate-500 hidden sm:inline">• Video, Graphic & Brand Studio</span>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="flex items-center gap-4 text-slate-400">
+          <a href="#" class="p-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 hover:text-white transition-colors" title="YouTube" onclick="event.preventDefault(); showToast('Opening YouTube portfolio channel...');">
+            <i data-lucide="youtube" class="w-5 h-5"></i>
+          </a>
+          <a href="#" class="p-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 hover:text-white transition-colors" title="Instagram" onclick="event.preventDefault(); showToast('Opening Instagram highlights...');">
+            <i data-lucide="instagram" class="w-5 h-5"></i>
+          </a>
+          <a href="#" class="p-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 hover:text-white transition-colors" title="Dribbble" onclick="event.preventDefault(); showToast('Opening Dribbble shot showcases...');">
+            <i data-lucide="dribbble" class="w-5 h-5"></i>
+          </a>
+          <a href="#" class="p-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 hover:text-white transition-colors" title="LinkedIn" onclick="event.preventDefault(); showToast('Opening LinkedIn profile...');">
+            <i data-lucide="linkedin" class="w-5 h-5"></i>
+          </a>
+          <a href="#" class="p-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 hover:text-white transition-colors" title="Email Direct" onclick="copyContactEmail()">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <p>© 2026 AetherVisuals Studio. All rights reserved. Crafted for creators & brands.</p>
+        <div class="flex gap-6">
+          <a href="#work" class="hover:text-cyan-400 transition-colors">Portfolio</a>
+          <a href="#services" class="hover:text-cyan-400 transition-colors">Services</a>
+          <a href="#templates" class="hover:text-cyan-400 transition-colors">Templates</a>
+          <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX / PROJECT DETAILS MODAL -->
+  <div id="projectModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="bg-[#0E1424] border border-slate-700/80 rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl relative transform transition-all">
+      <!-- Close Button -->
+      <button onclick="closeProjectModal()" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center border border-white/20 transition-all">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Media Canvas / Simulation -->
+      <div id="modalMediaContainer" class="relative aspect-video w-full bg-black flex items-center justify-center overflow-hidden">
+        <!-- Injected via JS -->
+      </div>
+
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-2">
+          <span id="modalMeta" class="text-xs font-semibold text-cyan-400">Project Meta</span>
+          <span id="modalTypeBadge" class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-purple-900/60 text-purple-300">Category</span>
+        </div>
+        <h3 id="modalTitle" class="font-display font-extrabold text-2xl text-white">Project Title</h3>
+        <p id="modalDescription" class="text-slate-300 text-sm mt-2 leading-relaxed">Detailed project writeup.</p>
+        
+        <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between">
+          <button onclick="closeProjectModal()" class="px-4 py-2 rounded-xl text-xs font-medium text-slate-400 hover:text-white transition-colors">
+            Close Preview
+          </button>
+          <a href="#contact" onclick="closeProjectModal()" class="px-5 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-cyan-500 hover:opacity-90 transition-opacity">
+            Request Similar Project
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOWREEL VIDEO MODAL -->
+  <div id="showreelModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+    <div class="bg-[#0B0F19] border border-purple-500/40 rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl relative">
+      <button onclick="closeShowreelModal()" class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center border border-white/20 transition-all">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="relative aspect-video bg-black flex flex-col items-center justify-center text-center p-6">
+        <!-- Interactive Simulated Video Reel Player -->
+        <div id="simulatedReelPlayer" class="w-full h-full relative flex items-center justify-center bg-gradient-to-tr from-purple-950 via-slate-900 to-cyan-950">
+          <div class="space-y-4 max-w-md">
+            <div class="w-16 h-16 mx-auto rounded-full bg-purple-600/30 border border-purple-400 flex items-center justify-center text-white animate-pulse">
+              <i data-lucide="play" class="w-8 h-8 fill-current ml-1"></i>
+            </div>
+            <h4 class="font-display font-bold text-xl text-white">2026 Creative Showreel Preview</h4>
+            <p class="text-xs text-slate-300">Fast cuts, dynamic sound fx, typography animations & 3D client showcases.</p>
+            <div class="w-48 h-1.5 bg-slate-800 rounded-full mx-auto overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-purple-500 to-cyan-400 w-2/3 animate-pulse"></div>
+            </div>
+            <div class="text-[11px] text-cyan-300 font-mono">01:14 / 01:45 • 4K UHD 60FPS</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-6 bg-slate-900/90 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <h4 class="text-white font-bold text-base">Like the pacing and sound design?</h4>
+          <p class="text-slate-400 text-xs">Let's craft this signature look for your next viral video or campaign.</p>
+        </div>
+        <a href="#contact" onclick="closeShowreelModal()" class="px-6 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-cyan-500 hover:scale-105 transition-transform">
+          Book This Style
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 hidden transform transition-all duration-300 translate-y-4 opacity-0">
+    <div class="glass-card bg-[#0F172A]/95 border border-cyan-500/40 rounded-xl px-5 py-4 shadow-2xl flex items-center gap-3 text-slate-200">
+      <div id="toastIconContainer" class="w-7 h-7 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0">
+        <i data-lucide="check" class="w-4 h-4"></i>
+      </div>
+      <div>
+        <p id="toastMessage" class="text-xs sm:text-sm font-semibold text-white">Action successful</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOpenIcon = document.getElementById('menuOpenIcon');
+    const menuCloseIcon = document.getElementById('menuCloseIcon');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isExpanded = !mobileMenu.classList.contains('hidden');
+      if (isExpanded) {
+        mobileMenu.classList.add('hidden');
+        menuOpenIcon.classList.remove('hidden');
+        menuCloseIcon.classList.add('hidden');
+      } else {
+        mobileMenu.classList.remove('hidden');
+        menuOpenIcon.classList.add('hidden');
+        menuCloseIcon.classList.remove('hidden');
+      }
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuOpenIcon.classList.remove('hidden');
+        menuCloseIcon.classList.add('hidden');
+      });
+    });
+
+    // Portfolio Filtering Logic
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active classes
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-purple-600', 'text-white', 'shadow-md');
+          b.classList.add('text-slate-400');
+        });
+        btn.classList.add('bg-purple-600', 'text-white', 'shadow-md');
+        btn.classList.remove('text-slate-400');
+
+        const category = btn.getAttribute('data-category');
+
+        portfolioItems.forEach(item => {
+          const itemCat = item.getAttribute('data-category');
+          if (category === 'all' || itemCat === category) {
+            item.classList.remove('hidden');
+            item.style.animation = 'fadeIn 0.3s ease forwards';
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Set initial filter active state
+    const firstFilter = document.querySelector('.filter-btn[data-category="all"]');
+    if (firstFilter) {
+      firstFilter.classList.add('bg-purple-600', 'text-white', 'shadow-md');
+      firstFilter.classList.remove('text-slate-400');
+    }
+
+    // Lightbox / Project Details Modal
+    const projectModal = document.getElementById('projectModal');
+    const modalMediaContainer = document.getElementById('modalMediaContainer');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalTypeBadge = document.getElementById('modalTypeBadge');
+
+    function openProjectModal(title, type, description, mediaUrl, metaInfo) {
+      modalTitle.textContent = title;
+      modalDescription.textContent = description;
+      modalMeta.textContent = metaInfo || 'Portfolio Showcase';
+      modalTypeBadge.textContent = type.toUpperCase();
+
+      if (type === 'video') {
+        modalMediaContainer.innerHTML = `
+          <div class="relative w-full h-full flex flex-col items-center justify-center bg-slate-950 p-6 text-center">
+            <img src="${mediaUrl}" alt="${title}" class="absolute inset-0 w-full h-full object-cover opacity-40">
+            <div class="relative z-10 space-y-3">
+              <div class="w-16 h-16 rounded-full bg-purple-600 text-white flex items-center justify-center mx-auto shadow-lg shadow-purple-600/50 hover:scale-110 transition-transform cursor-pointer" onclick="showToast('Playing full high-bitrate video stream...')">
+                <i data-lucide="play" class="w-7 h-7 fill-current ml-1"></i>
+              </div>
+              <p class="text-xs text-white font-semibold">Simulated 4K Player • Click to stream</p>
+            </div>
+          </div>
+        `;
+      } else {
+        modalMediaContainer.innerHTML = `
+          <img src="${mediaUrl}" alt="${title}" class="w-full h-full object-cover">
+        `;
+      }
+
+      projectModal.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeProjectModal() {
+      projectModal.classList.add('hidden');
+      modalMediaContainer.innerHTML = '';
+    }
+
+    // Showreel Modal
+    const showreelModal = document.getElementById('showreelModal');
+    function openShowreelModal() {
+      showreelModal.classList.remove('hidden');
+    }
+    function closeShowreelModal() {
+      showreelModal.classList.add('hidden');
+    }
+
+    // Close modals on clicking backdrop
+    window.addEventListener('click', (e) => {
+      if (e.target === projectModal) closeProjectModal();
+      if (e.target === showreelModal) closeShowreelModal();
+    });
+
+    // Template preview mock trigger
+    function previewTemplate(name, details) {
+      openProjectModal(
+        name,
+        'template',
+        details,
+        'https://placehold.co/1280x720/1e173e/8b5cf6?text=' + encodeURIComponent(name),
+        'Instant Digital Asset • Layered & Documented'
+      );
+    }
+
+    function handlePurchaseDemo(packName) {
+      showToast(`Selected "${packName}". Redirecting to instant checkout...`);
+    }
+
+    // Toast Notification System
+    function showToast(message) {
+      const toast = document.getElementById('toastNotification');
+      const toastMsg = document.getElementById('toastMessage');
+      toastMsg.textContent = message;
+
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-4', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+      }, 10);
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-4', 'opacity-0');
+        setTimeout(() => toast.classList.add('hidden'), 300);
+      }, 4000);
+    }
+
+    // Copy Email to Clipboard
+    function copyContactEmail() {
+      const email = 'hello@aethervisuals.design';
+      const dummyInput = document.createElement('input');
+      document.body.appendChild(dummyInput);
+      dummyInput.value = email;
+      dummyInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(dummyInput);
+      showToast('Email copied to clipboard: ' + email);
+    }
+
+    // Contact Form Submission Handler
+    const projectForm = document.getElementById('projectInquiryForm');
+    projectForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('senderName').value;
+      const service = document.getElementById('selectedService').value;
+
+      showToast(`Thank you, ${name}! Your inquiry for ${service} has been received.`);
+      projectForm.reset();
+    });
+
+    // Animated Numbers Counter for Hero Stats
+    function animateCounters() {
+      const counters = document.querySelectorAll('.counter');
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        let count = 0;
+        const increment = Math.ceil(target / 40);
+        const timer = setInterval(() => {
+          count += increment;
+          if (count >= target) {
+            count = target;
+            clearInterval(timer);
+          }
+          if (target >= 50 && target < 100) {
+            counter.innerText = count + 'M+';
+          } else {
+            counter.innerText = count + '+';
+          }
+        }, 30);
+      });
+    }
+
+    // Run Counter on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      animateCounters();
+    });
+  </script>
+</body>
+</html>
